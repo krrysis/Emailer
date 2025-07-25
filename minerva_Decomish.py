@@ -83,7 +83,7 @@ def send_bulk_emails(csv_file_path, subject, email_template, sender_email=None):
                 # Build the full email body
                 email_body = f"""<p>Hello {first_name},</p>
 <p>We have identified that the following application(s) have been marked as decommissioned in Minerva. However, they are still present in Qualys.<br>
-<br>Please review the details below and confirm the status of these applications. If confirmed, we will proceed with removing them from Qualys.</p>
+<br>Could you please confirm whether the applications listed below are indeed decommissioned? If so, we will proceed with removing them from the Qualys subscription accordingly.</p>
 <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
   <tr>
     <th>Minerva ID</th>
