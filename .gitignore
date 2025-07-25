@@ -1,3 +1,4 @@
 .env
-Latest_Decomissioned_Domains_List.csv
-emailer.log
+MonthlyMinervaDecomission/Latest_Decomissioned_Domains_List.csv
+MonthlyMinervaDecomission/emailer.log
+ImpervaCertExpiry/Subaccounts.csv
