@@ -61,12 +61,25 @@ def send_bulk_emails(csv_file_path, subject, email_template, sender_email=None):
                     print(f"Using account {sender_account.SmtpAddress} for {app_manager}")
 
                 # Set email properties
-                mail.To = f"{app_manager}; {it_officer}"
-                mail.CC = mailCC  # CC to specified email addresses
+                #mail.To = f"{app_manager}; {it_officer}"
+                #Resolve All Try
+                
+                recipient = mail.Recipients.Add(app_manager)
+                mail.CC=it_officer
+                if not mail.Recipients.ResolveAll():
+                    print(f"Failed to resolve recipients for {app_manager}, {it_officer}")
+                    continue
+                #mail.CC = mailCC  # CC to specified email addresses
 
                 # Extract first name from email
                 email_address = app_manager
-                first_name = email_address.split('@')[0].split('.')[0].capitalize()
+                #first_name = email_address.split('@')[0].split('.')[0].capitalize()
+                display_name=recipient.AddressEntry.Name
+                
+                if ',' in display_name:
+                    first_name = display_name.split(',')[1].strip().split()[0]
+                else:
+                    first_name = display_name.strip().split()[0]
 
                 # Build the HTML table rows for all grouped entries
                 table_rows = ""
