@@ -65,11 +65,12 @@ def send_bulk_emails(csv_file_path, subject, email_template, sender_email=None):
                 #Resolve All Try
                 
                 recipient = mail.Recipients.Add(app_manager)
-                mail.CC=it_officer
+                mail.Recipients.Add(it_officer)
+                #mail.CC=it_officer
                 if not mail.Recipients.ResolveAll():
                     print(f"Failed to resolve recipients for {app_manager}, {it_officer}")
                     continue
-                #mail.CC = mailCC  # CC to specified email addresses
+                mail.CC = mailCC  # CC to specified email addresses
 
                 # Extract first name from email
                 email_address = app_manager
